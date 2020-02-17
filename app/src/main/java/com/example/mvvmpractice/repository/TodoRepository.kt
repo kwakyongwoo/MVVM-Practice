@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import com.example.mvvmpractice.room.dao.TodoDao
 import com.example.mvvmpractice.room.database.MyDatabase
-import com.example.mvvmpractice.room.entitiy.Todo
+import com.example.mvvmpractice.room.entity.Todo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

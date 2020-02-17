@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.mvvmpractice.room.dao.TodoDao
-import com.example.mvvmpractice.room.entitiy.Todo
+import com.example.mvvmpractice.room.entity.Todo
 
 @Database(entities = [Todo::class], version = 1)
 abstract class MyDatabase : RoomDatabase() {

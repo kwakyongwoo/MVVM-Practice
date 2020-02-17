@@ -2,7 +2,7 @@ package com.example.mvvmpractice.room.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.mvvmpractice.room.entitiy.Todo
+import com.example.mvvmpractice.room.entity.Todo
 
 @Dao
 interface TodoDao {

@@ -1,9 +1,10 @@
 package com.example.mvvmpractice.viewmodel
 
 import android.app.Application
+import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import com.example.mvvmpractice.room.entitiy.Todo
+import com.example.mvvmpractice.room.entity.Todo
 import com.example.mvvmpractice.repository.TodoRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
