@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvmpractice.R
 import com.example.mvvmpractice.main.viewholder.MainViewHolder
 import com.example.mvvmpractice.room.entity.Todo
+import com.example.mvvmpractice.viewmodel.TodoViewModel
 
-class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
+class MainAdapter(private val onClick: (Todo) -> Unit, private val onLongClick: (Todo) -> Unit) : RecyclerView.Adapter<MainViewHolder>() {
     private var todos: List<Todo> = listOf()
 
     fun getAll(todos: List<Todo>) {
@@ -20,6 +21,15 @@ class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val viewHolder = MainViewHolder(DataBindingUtil.inflate(
             LayoutInflater.from(parent.context), R.layout.item_todo, parent, false))
+
+        viewHolder.itemView.setOnClickListener {
+            onClick(todos[viewHolder.adapterPosition])
+        }
+
+        viewHolder.itemView.setOnLongClickListener {
+            onLongClick(todos[viewHolder.adapterPosition])
+            true
+        }
 
         return viewHolder
     }
@@ -33,4 +43,6 @@ class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
             bind(todos[position])
         }
     }
+
+
 }

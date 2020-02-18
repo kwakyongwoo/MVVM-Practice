@@ -2,6 +2,8 @@ package com.example.mvvmpractice.viewmodel
 
 import android.app.Application
 import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.example.mvvmpractice.room.entity.Todo
@@ -32,5 +34,9 @@ class TodoViewModel(application: Application) : AndroidViewModel(application) {
 
     fun update(todo: Todo) = viewModelScope.launch {
         repository.updateTodo(todo)
+    }
+
+    fun onClickFab(view: View) {
+        insert(Todo(0, System.currentTimeMillis().toString(), "20200217", "20200228", "c"))
     }
 }

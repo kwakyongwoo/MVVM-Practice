@@ -19,9 +19,4 @@ data class Todo(
     var memo: String
 ) {
     var checked = false
-
-    @Ignore
-    fun onClick(view: View) {
-        checked = !checked
-    }
 }

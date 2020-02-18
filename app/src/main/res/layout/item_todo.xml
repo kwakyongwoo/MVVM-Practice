@@ -13,16 +13,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:onClick="@{item::onClick}">
+        android:focusable="true"
+        android:clickable="true">
 
         <CheckBox
             android:id="@+id/todo_cb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:checked="@{item.checked}"
             android:clickable="false"
             android:focusable="false"
+            android:checked="@={item.checked}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/todo_tv_name"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,20 +46,10 @@
             android:layout_margin="16dp"
             android:text="@{item.dDate}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/todo_tv_left"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/todo_tv_name"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/todo_tv_left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="0"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/todo_tv_due_date"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

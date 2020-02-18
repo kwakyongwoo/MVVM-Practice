@@ -6,6 +6,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvmpractice.R
@@ -24,25 +25,30 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding?.lifecycleOwner = this
+        vm = ViewModelProviders.of(this).get(TodoViewModel::class.java)
 
-        val adapter = MainAdapter()
+        binding?.vm = vm
+
+        val adapter = MainAdapter({ todo -> onClick(todo) }, { todo -> onLongClick(todo) })
+
         binding?.mainRcv?.apply {
             this.adapter = adapter
             layoutManager = LinearLayoutManager(this@MainActivity, RecyclerView.VERTICAL, false)
+            addItemDecoration(DividerItemDecoration(this@MainActivity, DividerItemDecoration.VERTICAL))
+
         }
 
-        vm = ViewModelProviders.of(this).get(TodoViewModel::class.java)
         vm.getAll().observe(this, Observer { items ->
             adapter.getAll(items)
         })
-
-        main_fab.setOnClickListener {
-            vm.insert(Todo(0, System.currentTimeMillis().toString(), "20200217", "20200228", "c"))
-        }
-
     }
 
-    private fun deleteTodo(todo: Todo) {
+    private fun onClick(todo: Todo) {
+        todo.checked = !todo.checked
+        vm.update(todo)
+    }
+
+    private fun onLongClick(todo: Todo) {
         AlertDialog.Builder(this).apply {
             setTitle("${todo.title} 삭제")
             setPositiveButton("예") { dialog, which ->

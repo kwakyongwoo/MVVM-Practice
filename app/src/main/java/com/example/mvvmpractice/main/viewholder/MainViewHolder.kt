@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.absoluteValue
 
-class MainViewHolder(private val binding: ItemTodoBinding) : RecyclerView.ViewHolder(binding.root) {
+class MainViewHolder(val binding: ItemTodoBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: Todo) {
         binding.apply {
